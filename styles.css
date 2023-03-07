@@ -1,0 +1,63 @@
+body {
+	margin: 0;
+	background: linear-gradient(to top right, black, gray);
+	display: flex;
+	flex-direction: column;
+}
+
+svg {
+	height: 100vh;
+}
+
+#handleSymbol {
+	opacity: 0.5;
+}
+#handleSymbol polyline {
+	stroke: white;
+
+}
+#handleSymbol circle {
+	fill: white;
+
+}
+#handleSymbol polyline.arrow {
+	fill: none;
+	stroke: black;
+
+}
+
+fieldset {
+	margin: 1vh 2vw;
+	margin-right: 8vw;
+}
+
+legend {
+	color: lemonchiffon;
+}
+
+label {
+	color: lemonchiffon;
+}
+
+code {
+	color: white;
+}
+
+input[type='url'] {
+	width: 80vw;
+}
+
+input[type='color'] {
+	width: 10vw;
+	height: 10vw;
+	border: none;
+	outline: none;
+}
+
+#filterBlock {
+	background: linear-gradient(to top right, black, gray);
+	border: solid white 4px;
+
+	margin: 1vh 2vw;
+	margin-right: 8vw;
+}

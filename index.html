@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+	<title>toneBuilder</title>
+	<meta name="viewport" content="width=device-width, initial-scale=4">
+	<link href="./styles.css" rel="stylesheet" />
+	<script src="./main.js" defer></script>
+  </head>
+
+  <body>
+	<svg viewBox="0 0 10 10">
+	  <title>Filter demonstraion area</title>
+	  <desc>
+		An area for demonstarting the functioning of the filter.
+		Two images are displayed the one filtered the other one not,
+		aswell as two rectangles that visualize the color mapping.
+	  </desc>
+	  <defs>
+		<filter id="duoFilter" color-interpolation-filters="sRGB">
+		  <feComponentTransfer >
+			<feFuncR
+			  type="table"
+			  tableValues="0 1"
+			  />
+			<feFuncG
+			  type="table"
+			  tableValues="0 0"
+			  />
+			<feFuncB
+			  type="table"
+			  tableValues="0 1"
+			  />
+		  </feComponentTransfer>
+		</filter>
+		<filter id="inv" color>
+		  <feColorMatrix
+			type="matrix"
+			values="-1  0  0 0 1
+					 0 -1  0 0 1
+					 0  0 -1 0 1
+					 0  0  0 1 0"
+			/>
+		</filter>
+		<clipPath id="beforeAfterClipPath">p
+		  <rect height="100%" width="100%" />
+		</clipPath>
+		<linearGradient id="blackWhiteGrad"
+						x1="0" y1="0.5"
+						x2="1" y2="0.5"
+						>
+		  <stop stop-color="black" offset="0" />
+		  <stop stop-color="white" offset="1" />
+		</linearGradient>
+	  </defs>
+	  <symbol id="handleSymbol"
+			  viewBox="-10 -10 20 20">
+		<polyline points="0 -10
+						  0 10"
+				  />
+		<circle r="4" />
+		<polyline class="arrow"
+				  points="-1 -2
+						  -3 0
+						  -1 2"
+				  />
+		<polyline class="arrow"
+				  points="1 -2
+						  3 0
+						  1 2"
+				  />
+	  </symbol>
+	  <image href="./Handle_Of_Sewing_Machine.jpg"
+			 height="9" width="100%"
+			 preserveAspectRatio="xMidYMid slice"
+			 />
+	  <image href="./Handle_Of_Sewing_Machine.jpg"
+			 height="9" width="100%"
+			 preserveAspectRatio="xMidYMid slice"
+			 filter="grayscale(1) url(#duoFilter)"
+			 clip-path="url(#beforeAfterClipPath)"
+			 />
+	  <use id="handle"
+		   href="#handleSymbol"
+		   width="2" height="4"
+		   x="4" y="2.5"
+		   />
+	  <rect y="9"
+			height="0.5" width="100%"
+			fill="url(#blackWhiteGrad)">
+		<title>Unfiltered black to white gradient</title>
+	  </rect>
+	  <rect y="9.5"
+			height="0.5" width="100%"
+			fill="url(#blackWhiteGrad)"
+			filter="url(#duoFilter)"
+			>
+		<title>Filtered black to white gradient</title>
+	  </rect>
+	</svg>
+	
+	<form method="get" onsubmit="return false;">
+	  <label for="userURL">image URL
+		<input id="userURL" type="url" />
+	  </label>
+
+	  <fieldset id="filterColors">
+		<legend>Filter colors</legend>
+		<input type="color" />
+		<input type="color" />
+	  </fieldset>
+	  <fieldset id="controls">
+		<legend>Filter controls</legend>
+		<label for="removeBtn">Remove color
+		  <button id="removeBtn" type="button">-</button>
+		</label>
+		<label for="addBtn">Add color
+		  <button id="addBtn" type="button">+</button>
+		</label>
+		<label for="modeBtn">Change color mode
+		  <button id="modeBtn" type="button">discrete</button>
+		</label>
+		<label for="interpolationBtn">Change filter interpolation
+		  <button id="interpolationBtn" type="button">linearRGB</button>
+		</label>
+	  </fieldset>
+	</form>
+	
+	<div id="filterBlock">
+	  <label for="copyBtn">Copy to clipboard
+		<button id="copyBtn" type="button">📋</button>
+	  </label>
+	  <div><code id="filterOutput"></code></div>
+	</div>
+  </body>
+  
+</html>
