@@ -90,6 +90,8 @@ function connectPickersToFilter() {
 
 const userURL = document.getElementById("userURL");
 function updateImages() {
+	if (userURL.value === "")
+		userURL.value = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Karnaval_Hasselt.jpg/1024px-Karnaval_Hasselt.jpg"
 	const images = document.querySelectorAll("image");
 	for (const image of Array.from(images))
 		image.setAttributeNS(null, "href", userURL.value);
