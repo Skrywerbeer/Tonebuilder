@@ -23,7 +23,6 @@ svg {
 #handleSymbol polyline.arrow {
 	fill: none;
 	stroke: black;
-
 }
 
 fieldset {
@@ -48,8 +47,8 @@ input[type='url'] {
 }
 
 input[type='color'] {
-	width: 10vw;
-	height: 10vw;
+	width: 5vw;
+	height: 5vw;
 	border: none;
 	outline: none;
 }
