@@ -91,7 +91,7 @@ function connectPickersToFilter() {
 const userURL = document.getElementById("userURL");
 function updateImages() {
 	if (userURL.value === "")
-		userURL.value = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Karnaval_Hasselt.jpg/1024px-Karnaval_Hasselt.jpg"
+		userURL.value = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Oahu_North_Shore_surfing_watchers.jpg/1280px-Oahu_North_Shore_surfing_watchers.jpg"
 	const images = document.querySelectorAll("image");
 	for (const image of Array.from(images))
 		image.setAttributeNS(null, "href", userURL.value);
